@@ -4,7 +4,7 @@
  
  ![Untitled](https://user-images.githubusercontent.com/90187106/140598157-23c9db52-fc2e-462a-9278-eb43b93b161c.png)
 
-Aplikasi ini digunakan oleh admin yang mengelola data-data yang terkait dengan perpustakaan seperti mengelola data anggota,buku, dan transaksi peminjaman dan pengembalian buku. Mulai pekerjaan pada tanggal 31 Oktober 2021 dan berakhir pada 05 November 2021
+Aplikasi ini digunakan untuk para admin yang mengelola data-data yang terkait dengan perpustakaan seperti mengelola data anggota,buku, dan transaksi peminjaman dan pengembalian buku. Mulai pekerjaan pada tanggal 31 Oktober 2021 dan berakhir pada 05 November 2021
  
  **DAFTAR MENU**
  1. [_**Download**_](#Download)
@@ -162,7 +162,8 @@ Aplikasi ini digunakan oleh admin yang mengelola data-data yang terkait dengan p
  - Masih belajar konsep dari javascript, sehingga program terjadi :
    - terjadi error menampilkan halaman, padahal script tidak error (walaupun ada solusi yang tidak tahu benar atau tidak seperti : tekan ctrl+shift+del > clear cahche).
    - penggunaan jQuery.post() masih belum rapih (belum belajar callback (kalau di java listener)).
-   - baru segini(nanti lanjut dari sini).
+ - buat halaman untuk anggotanya dong, hehe.
+ - baru segini(nanti lanjut dari sini).
  
  ## My Social Links
  
