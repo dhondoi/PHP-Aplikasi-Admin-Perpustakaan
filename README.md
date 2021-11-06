@@ -1,5 +1,10 @@
 # Aplikasi Admin Perpustakaan Berbasis Web
- Aplikasi ini digunakan oleh admin yang mengelola data-data yang terkait dengan perpustakaan seperti mengelola data anggota,buku, dan transaksi peminjaman dan pengembalian buku.
+ 
+ ![Untitled](https://user-images.githubusercontent.com/90187106/140598123-3a4912e0-b1fe-4648-a378-a6bca7f60e62.png)
+ 
+ ![Untitled](https://user-images.githubusercontent.com/90187106/140598157-23c9db52-fc2e-462a-9278-eb43b93b161c.png)
+
+Aplikasi ini digunakan oleh admin yang mengelola data-data yang terkait dengan perpustakaan seperti mengelola data anggota,buku, dan transaksi peminjaman dan pengembalian buku.
  
  **DAFTAR MENU**
  1. [_**Download**_](#Download)
