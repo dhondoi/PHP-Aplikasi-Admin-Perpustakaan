@@ -150,6 +150,6 @@ Aplikasi ini digunakan oleh admin yang mengelola data-data yang terkait dengan p
  - Coba Masukkan _username_ `admin` dan _password_ `admin` jika berhasil login, _database_ terhubung.
  
  ## My Social Links
- - **Instagram** : [**https://www.instagram.com/dhondoii/**](https://www.instagram.com/dhondoii/)
- - **E-Mail** : **donifirmansyah33@gmail.com**
- - **Facebook** : [**https://www.facebook.com/dhondoi/**](https://www.facebook.com/dhondoi/)
+ - <code><img src="https://camo.githubusercontent.com/c9dacf0f25a1489fdbc6c0d2b41cda58b77fa210a13a886d6f99e027adfbd358/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f696e7374616772616d2e737667" width="2%"></code> **Instagram** : [**https://www.instagram.com/dhondoii/**](https://www.instagram.com/dhondoii/)
+ - <code><img src="https://camo.githubusercontent.com/4a3dd8d10a27c272fd04b2ce8ed1a130606f95ea6a76b5e19ce8b642faa18c27/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f676d61696c2e737667" width="2%"></code> **E-Mail** : **donifirmansyah33@gmail.com**
+ - <code><img src="https://camo.githubusercontent.com/8f245234577766478eaf3ee72b0615e99bb9ef3eaa56e1c37f75692811181d5c/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f66616365626f6f6b2e737667" width="2%"></code> **Facebook** : [**https://www.facebook.com/dhondoi/**](https://www.facebook.com/dhondoi/)
