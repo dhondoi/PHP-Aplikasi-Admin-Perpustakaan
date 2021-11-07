@@ -165,8 +165,9 @@ Aplikasi ini digunakan untuk para admin yang mengelola data-data yang terkait de
  - Masih belajar konsep dari javascript, sehingga program terjadi :
    - terjadi error menampilkan halaman, padahal script tidak error (walaupun ada solusi yang tidak tahu benar atau tidak seperti : tekan ctrl+shift+del > clear cahche).
    - penggunaan jQuery.post() masih belum rapih (belum belajar callback (kalau di java listener)).
- - buat halaman untuk anggotanya dong, hehe.
- - baru segini(nanti lanjut dari sini).
+ - Buat halaman untuk anggotanya dong, hehe.
+ - Belum ada penambahan cetak untuk setiap transaksi (bukti transaksi).
+ - Baru segini(nanti lanjut dari sini).
  
  ## My Social Links
  
