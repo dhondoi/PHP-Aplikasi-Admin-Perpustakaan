@@ -7,6 +7,7 @@ $(document).ready(function () {
   $(document).on("click", async function (a) {
     //get data from data base, then insert in form
     if (a.target.id == "no_regis") {
+      $("#modalLoading").modal("show");
       $("#staticBackdropLabel").html("Detail Anggota");
       $("#modal-btn-ubah").html("Ubah").addClass("btn-warning");
       $("#modal-btn-hapus").html("Hapus").addClass("btn-danger");
@@ -28,7 +29,12 @@ $(document).ready(function () {
         //type object callback from server
         "json"
       );
-      $("#staticBackdrop").modal("show");
+      setTimeout(function () {
+        $("#modalLoading").modal("hide");
+        setTimeout(function () {
+          $("#staticBackdrop").modal("show");
+        }, 300);
+      }, 1000);
     } else if (a.target.id == "btn-add-data") {
       $("#staticBackdropLabel").html("Tambah Data Anggota");
       $("#noregis,#nama,#alamat").prop("readonly", false);
@@ -66,15 +72,22 @@ $(document).ready(function () {
     if ($(this).text() === "Hapus") {
       const status = confirm("Hapus Data Anggota Dengan ID " + $("#noregis").val() + " ?");
       if (status === true) {
+        $("#staticBackdrop").modal("hide");
+        $("#modalLoading").modal("show");
         $.post(
           "./api.php",
           { code: "delete data anggota", id: $("#noregis").val() },
           async function (data) {
             //callback from server
             if (data.success === 1) {
-              alert("Data Anggota Berhasil Dihapus");
               await refreshTable();
               resetModal();
+              setTimeout(function () {
+                $("#modalLoading").modal("hide");
+                setTimeout(function () {
+                  alert("Data Anggota Berhasil Dihapus");
+                }, 300);
+              }, 1000);
             }
           },
           //type object callback from server
@@ -161,6 +174,8 @@ $(document).ready(function () {
     if (checkForm("simpan")) {
       const status = confirm("Simpan Penambahan Data?");
       if (status == true) {
+        $("#staticBackdrop").modal("hide");
+        $("#modalLoading").modal("show");
         const no_registrasi = $("#noregis").val().toUpperCase();
         const nama = $("#nama").val();
         const alamat = $("#alamat").val();
@@ -180,11 +195,22 @@ $(document).ready(function () {
             //callback from server
             if (data.success === 1) {
               await uploadImage();
-              alert("Data Anggota Berhasil Ditambah");
               await refreshTable();
               resetModal();
+              setTimeout(function () {
+                $("#modalLoading").modal("hide");
+                setTimeout(function () {
+                  alert("Data Anggota Berhasil Ditambah");
+                }, 300);
+              }, 1000);
             } else {
-              alert("Data Anggota Gagal Ditambah (ID Sudah Dipakai)");
+              setTimeout(function () {
+                $("#modalLoading").modal("hide");
+                setTimeout(function () {
+                  alert("Data Anggota Gagal Ditambah (ID Sudah Dipakai)");
+                  $("#staticBackdrop").modal("show");
+                }, 300);
+              }, 1000);
             }
           },
           "json"
@@ -199,6 +225,8 @@ $(document).ready(function () {
     if (checkForm("ubah")) {
       const status = confirm("Simpan Perubahan Data?");
       if (status == true) {
+        $("#staticBackdrop").modal("hide");
+        $("#modalLoading").modal("show");
         const no_registrasi = $("#noregis").val();
         const nama = $("#nama").val();
         const alamat = $("#alamat").val();
@@ -216,9 +244,14 @@ $(document).ready(function () {
           },
           async function (data) {
             await uploadImage();
-            alert("Data Anggota Berhasil Diubah");
             await refreshTable();
             resetModal();
+            setTimeout(function () {
+              $("#modalLoading").modal("hide");
+              setTimeout(function () {
+                alert("Data Anggota Berhasil Diubah");
+              }, 300);
+            }, 1000);
           },
           //type object callback from server
           "json"
@@ -264,6 +297,10 @@ $(document).ready(function () {
   });
 
   $("#btnPrintAnggota").on("click", function () {
-  $("body").load("./content/print-anggota.php")
+    $("#modalLoading").modal("show");
+    setTimeout(function () {
+      $("body").load("./content/print-anggota.php");
+      $("#modalLoading").modal("hide");
+    }, 1000);
   });
 });

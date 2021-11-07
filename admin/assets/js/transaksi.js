@@ -10,10 +10,13 @@ $(document).ready(function () {
   const modalTransaksi = $("#modalTransaksi");
   const modalAnggota = $("#modalAnggota");
   const modalBuku = $("#modalBuku");
+  const modalLoading = $("#modalLoading");
   const labelJudulEx = $("#labelJudulEx");
   const btnCloseFormTransaksi = $("#btnCloseFormTransaksi");
   const btnGetAnggota = $("#btnGetAnggota");
   const btnGetBuku = $("#btnGetBuku");
+  const btnPrintTransaksi = $("#btnPrintTransaksi");
+  const btnExTransaksi1 = $("#btnExTransaksi1");
   const editTextTransaksi = $("#editTextTransaksi");
   const editTextAnggota = $("#editTextAnggota");
   const editTextNamaAnggota = $("#editTextNamaAnggota");
@@ -21,11 +24,9 @@ $(document).ready(function () {
   const editTextNamaBuku = $("#editTextNamaBuku");
   const editTextTglPinjam = $("#editTextTglPinjam");
   const editTextTglKembali = $("#editTextTglKembali");
-
-  const btnExTransaksi1 = $("#btnExTransaksi1");
-
   const divIDtransaksi = $("#divIDtransaksi");
   const form = $("form");
+  const body = $("body");
   // nama perform
   const click = "click";
   const show = "show";
@@ -60,6 +61,7 @@ $(document).ready(function () {
   const failFinish = "Kesalahan Data";
   // configuration request data
   const url = "./api.php";
+  const urlPrint = "./content/print-transaksi.php";
   const getDataTabel = "get data table transaksi";
   const getDataForm = "get data transaksi";
   const insertDataTransaksi = "add data transaksi";
@@ -81,6 +83,8 @@ $(document).ready(function () {
     } else if (labelJudulEx.html() === titleDetail) {
       const status = confirm(questionFinish);
       if (status == true) {
+        modalTransaksi.modal(hide);
+        modalLoading.modal(show);
         await $.post(
           url,
           {
@@ -90,11 +94,22 @@ $(document).ready(function () {
           async function (data) {
             //callback from server
             if (JSON.parse(data.success) === 1) {
-              alert(successFinish);
               await refreshTable();
               hideForm();
+              setTimeout(function () {
+                modalLoading.modal(hide);
+                setTimeout(function () {
+                  alert(successFinish);
+                }, 300);
+              }, 1000);
             } else {
-              alert(failFinish);
+              setTimeout(function () {
+                modalLoading.modal(hide);
+                setTimeout(function () {
+                  alert(failFinish);
+                  modalTransaksi.modal(show);
+                }, 300);
+              }, 1000);
             }
           },
           json
@@ -181,6 +196,7 @@ $(document).ready(function () {
   //button detail and add
   $(document).on(click, async function (params) {
     if (params.target.id === btnDetailTransaksi) {
+      modalLoading.modal(show);
       labelJudulEx.html(titleDetail);
       btnGetAnggota.prop(disabled, true);
       btnGetBuku.prop(disabled, true);
@@ -196,7 +212,12 @@ $(document).ready(function () {
           editTextNamaBuku.attr(mValue, data.judulbuku);
           editTextTglPinjam.attr(mValue, data.tglpinjam);
           editTextTglKembali.attr(mValue, data.tglkembali);
-          modalTransaksi.modal(show);
+          setTimeout(function () {
+            modalLoading.modal(hide);
+            setTimeout(function () {
+              modalTransaksi.modal(show);
+            }, 300);
+          }, 1000);
         },
         //type object callback from server
         json
@@ -260,6 +281,8 @@ $(document).ready(function () {
   async function addDataTransaksi() {
     const status = confirm(questionAdd);
     if (status == true) {
+      modalTransaksi.modal(hide);
+      modalLoading.modal(show);
       await $.post(
         url,
         {
@@ -272,11 +295,22 @@ $(document).ready(function () {
         async function (data) {
           //callback from server
           if (data.success === 1) {
-            alert(successAdd);
             await refreshTable();
             hideForm();
+            setTimeout(function () {
+              modalLoading.modal(hide);
+              setTimeout(function () {
+                alert(successAdd);
+              }, 300);
+            }, 1000);
           } else {
-            alert(failAdd);
+            setTimeout(function () {
+              modalLoading.modal(hide);
+              setTimeout(function () {
+                alert(failAdd);
+                modalTransaksi.modal(hide);
+              }, 300);
+            }, 1000);
           }
         },
         json
@@ -300,7 +334,11 @@ $(document).ready(function () {
     modalTransaksi.modal(hide);
   }
 
-  $("#btnPrintTransaksi").on("click", function () {
-    $("body").load("./content/print-transaksi.php")
-    });
+  btnPrintTransaksi.on(click, function () {
+    modalLoading.modal(show);
+    setTimeout(function () {
+      body.load(urlPrint);
+      modalLoading.modal(hide);
+    }, 1000);
+  });
 });

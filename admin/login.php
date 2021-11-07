@@ -73,7 +73,7 @@
   </div>
   <!-- END main -->
   <!-- START modal (pop up masuk dan daftar) -->
-  <div class="modal fade login" id="loginModal"  >
+  <div class="modal fade login" id="loginModal">
     <div class="modal-dialog login animated ">
       <div class="modal-content">
         <div class="modal-header">
@@ -94,6 +94,23 @@
                   <button id="input-login" class="btn btn-default btn-login" type="button" name="code" value="login">MASUK</button>
                 </form>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Loading-->
+  <div class="modal fade" id="modalLoading" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row row-cols-1 justify-content-center text-center">
+            <div class="col">
+              <img src="./assets/img/loading.gif" width="100px">
+            </div>
+            <div class="col">
+              <h1>Harap Tunggu</h1>
             </div>
           </div>
         </div>

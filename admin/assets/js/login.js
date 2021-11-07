@@ -8,6 +8,8 @@ $(document).ready(function () {
     }, 230);
   }
   function doLogin() {
+    $("#loginModal").modal("hide");
+    $("#modalLoading").modal("show");
     $(".error").removeClass("alert alert-danger").html("");
     $.post(
       "./api.php",
@@ -19,14 +21,20 @@ $(document).ready(function () {
       function (data) {
         //callback from server
         if (JSON.parse(data).success === 1) {
-          $("#loginModal").modal("hide");
           setTimeout(function () {
-            alert("Selamat Datang ".concat(JSON.parse(data).nm_admin));
-            location.replace("./index.php");
-          }, 400);
+            $("#modalLoading").modal("hide");
+            setTimeout(function () {
+              alert("Selamat Datang ".concat(JSON.parse(data).nm_admin));
+              location.replace("./index.php");
+            }, 400);
+          }, 1000);
         } else {
+          setTimeout(function () {
+            $("#modalLoading").modal("hide");
+            $("#loginModal").modal("show");
+            shakeModal();
+          }, 1000);
           //console.log(data);
-          shakeModal();
         }
       }
     );

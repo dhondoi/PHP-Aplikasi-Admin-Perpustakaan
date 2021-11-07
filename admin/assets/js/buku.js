@@ -7,6 +7,7 @@ $(document).ready(function () {
   $(document).on("click", async function (a) {
     //get data from data base, then insert in form
     if (a.target.id == "btnDetailBuku") {
+      $("#modalLoading").modal("show");
       $("#labelExBuku").html("Detail Buku");
       $("#btnExBuku1").html("Ubah").addClass("btn-warning");
       $("#btnExBuku2").html("Hapus").addClass("btn-danger");
@@ -24,7 +25,12 @@ $(document).ready(function () {
         //type object callback from server
         "json"
       );
-      $("#modalBuku").modal("show");
+      setTimeout(function () {
+        $("#modalLoading").modal("hide");
+        setTimeout(function () {
+          $("#modalBuku").modal("show");
+        }, 300);
+      }, 1000);
     } else if (a.target.id == "btnAddBuku") {
       $("#labelExBuku").html("Tambah Data Buku");
       $("#idBuku,#judulBuku,#kategoriBuku,#pengarangBuku,#penerbitBuku").prop("readonly", false);
@@ -59,17 +65,30 @@ $(document).ready(function () {
     if ($(this).text() === "Hapus") {
       const status = confirm("Hapus Data Buku Dengan ID " + $("#idBuku").val() + " ?");
       if (status === true) {
+        $("#modalBuku").modal("hide");
+        $("#modalLoading").modal("show");
         $.post(
           "./api.php",
           { code: "delete data buku", id: $("#idBuku").val() },
           async function (data) {
             //callback from server
             if (data.success === 1) {
-              alert("Data Buku Berhasil Dihapus");
               await refreshTable();
               resetModal();
+              setTimeout(function () {
+                $("#modalLoading").modal("hide");
+                setTimeout(function () {
+                  alert("Data Buku Berhasil Dihapus");
+                }, 300);
+              }, 1000);
             } else {
-              alert("Data Buku Gagal Dihapus");
+              setTimeout(function () {
+                $("#modalLoading").modal("hide");
+                setTimeout(function () {
+                  alert("Data Buku Gagal Dihapus");
+                  $("#modalBuku").modal("show");
+                }, 300);
+              }, 1000);
             }
           },
           //type object callback from server
@@ -142,6 +161,8 @@ $(document).ready(function () {
     if (checkForm()) {
       const status = confirm("Simpan Penambahan Data?");
       if (status == true) {
+        $("#modalBuku").modal("hide");
+        $("#modalLoading").modal("show");
         await $.post(
           "./api.php",
           {
@@ -155,11 +176,22 @@ $(document).ready(function () {
           async function (data) {
             //callback from server
             if (data.success === 1) {
-              alert("Data Buku Berhasil Ditambah");
               await refreshTable();
               resetModal();
+              setTimeout(function () {
+                $("#modalLoading").modal("hide");
+                setTimeout(function () {
+                  alert("Data Buku Berhasil Ditambah");
+                }, 300);
+              }, 1000);
             } else {
-              alert("Data Buku Gagal Ditambah (ID Sudah Dipakai)");
+              setTimeout(function () {
+                $("#modalLoading").modal("hide");
+                setTimeout(function () {
+                  alert("Data Buku Gagal Ditambah (ID Sudah Dipakai)");
+                  $("#modalBuku").modal("show");
+                }, 300);
+              }, 1000);
             }
           },
           "json"
@@ -174,6 +206,8 @@ $(document).ready(function () {
     if (checkForm()) {
       const status = confirm("Simpan Perubahan Data?");
       if (status == true) {
+        $("#modalBuku").modal("hide");
+        $("#modalLoading").modal("show");
         $.post(
           "./api.php",
           {
@@ -185,9 +219,14 @@ $(document).ready(function () {
             penerbit: $("#penerbitBuku").val(),
           },
           async function (data) {
-            alert("Data Buku Berhasil Diubah");
             await refreshTable();
             resetModal();
+            setTimeout(function () {
+              $("#modalLoading").modal("hide");
+              setTimeout(function () {
+                alert("Data Buku Berhasil Diubah");
+              }, 300);
+            }, 1000);
           },
           //type object callback from server
           "json"
@@ -198,6 +237,10 @@ $(document).ready(function () {
     }
   }
   $("#btnPrintBuku").on("click", function () {
-    $("body").load("./content/print-buku.php")
-    });
+    $("#modalLoading").modal("show");
+    setTimeout(function () {
+      $("body").load("./content/print-buku.php");
+      $("#modalLoading").modal("hide");
+    }, 1000);
+  });
 });
