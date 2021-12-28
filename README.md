@@ -1,5 +1,6 @@
+<!--
 [![Untitled](https://user-images.githubusercontent.com/90187106/140603427-8f53b940-5dfc-48f7-a81a-cd0cad1d265c.png)](https://saweria.co/dhondoi)
-
+-->
 
 # Aplikasi Admin Perpustakaan Berbasis Web
  
